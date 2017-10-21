@@ -18,8 +18,10 @@
                     <p class="post-meta">
                         By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
                               th:text="${post.user.name}"></a> under
-                        <a class="post-category post-category-js" href="#">MULTIPLE</a>
+                        
+                        <a class="post-category post-category-js" href="#" >MULTIPLE</a>
                         <a class="post-category post-category-yui" href="#">FUTURE TAG</a>
+                        <a class="post-category post-category-js" th:each="tag : ${post.tags}" href="#" th:text="${tag}" ></a>
                     </p>
                 </header>
 
@@ -75,6 +77,11 @@
                                 }
                             </script>
                         </div>
+                    </div>
+                    
+                    <div class="pure-control-group">
+                        <label for="title">Title</label>
+                        <input id="title" class="pure-input-3-4" type="text" placeholder="Tags" th:field="*{tags}"/>
                     </div>
 
                     <div class="pure-controls">

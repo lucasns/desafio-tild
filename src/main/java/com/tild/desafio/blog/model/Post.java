@@ -5,6 +5,7 @@ import com.google.common.base.Preconditions;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -22,6 +23,9 @@ public class Post {
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties("posts")
     private User user;
+    
+    @ElementCollection
+    private List<String> tags;
 
     public Post() {
         super();
@@ -57,6 +61,14 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 
     @Override
