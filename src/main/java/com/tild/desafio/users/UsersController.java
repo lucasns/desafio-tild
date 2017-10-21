@@ -31,7 +31,10 @@ public class UsersController {
 
     @PostMapping
     public ModelAndView createUser(User user) {
-        userRepository.save(user);
+        if (user.isValid()) {
+            userRepository.save(user);
+        }
+       
         return new ModelAndView("redirect:/");
     }
 }
