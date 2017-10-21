@@ -1,0 +1,13 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: header"></head>
+<body>
+
+<div id="layout" class="pure-g">
+    <div th:replace="layout :: sidebar"></div>
+    <div th:replace="posts :: single-post"></div>
+    <div th:replace="posts :: comments"></div>
+</div>
+
+</body>
+</html>

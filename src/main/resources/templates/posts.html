@@ -37,6 +37,68 @@
     </div>
 </div>
 
+<div th:fragment="single-post" class="content pure-u-1 pure-u-md-3-4">
+    <div>
+        <!-- A wrapper for all the blog posts -->
+        <div class="posts">
+
+            <section class="post" th:each="post : ${posts}">
+                <header class="post-header">
+                    <img width="48" height="48" alt="" class="post-avatar"
+                         src="https://cdn2.iconfinder.com/data/icons/starwars/icons/128/clone-old.png"/>
+
+                    <h2 class="post-title" th:text="${post.title}"></h2>
+
+                    <p class="post-meta">
+                        By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
+                              th:text="${post.user.name}"></a> under
+                        
+                        <a class="post-category post-category-js" href="#" >MULTIPLE</a>
+                        <a class="post-category post-category-yui" href="#">FUTURE TAG</a>
+                        <a class="post-category post-category-js" th:each="tag : ${post.tags}" th:href="${'?tags=' + tag.name}"  th:text="${tag}" ></a>
+                    </p>
+                </header>
+
+                <div class="post-description" th:utext="${post.text}"></div>
+            </section>
+
+        </div>
+
+    </div>
+</div>
+
+<div th:fragment="comments" class="content pure-u-1 pure-u-md-3-4">
+    <div>
+        <!-- A wrapper for all the blog posts -->
+        <div class="comments">
+            <h1 class="content-subhead">Comments</h1>
+
+            <section class="post" th:each="comment : ${comments}">
+                <header class="post-header">
+                    <img width="48" height="48" alt="" class="post-avatar"
+                         src="https://cdn2.iconfinder.com/data/icons/starwars/icons/128/clone-old.png"/>
+
+                    <h2 class="comment-user" th:text="${comment}"></h2>
+
+                    <!-- 
+                    <p class="post-meta">
+                        By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
+                              th:text="${post.user.name}"></a> under
+                        
+                        <a class="post-category post-category-js" href="#" >MULTIPLE</a>
+                        <a class="post-category post-category-yui" href="#">FUTURE TAG</a>
+                        <a class="post-category post-category-js" th:each="tag : ${post.tags}" th:href="${'?tags=' + tag.name}"  th:text="${tag}" ></a>
+                    </p>
+                     -->
+                </header>
+
+            </section>
+
+        </div>
+
+    </div>
+</div>
+
 <div th:fragment="new" class="content pure-u-1 pure-u-md-3-4">
     <div>
         <div class="posts">

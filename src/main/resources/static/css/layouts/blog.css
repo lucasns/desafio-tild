@@ -181,3 +181,7 @@ h3 {
     display: inline-block;
     vertical-align: middle;
 }
+
+.comment-user {
+	font-size: 18px;
+}
