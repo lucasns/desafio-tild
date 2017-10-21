@@ -24,7 +24,7 @@ etc..) ao projeto;
 e a justificativa da decisão escolhida.
 
 ## Resumo
-O resumo de implementação pode ser encontrado [aqui](../blob/master/docs/resumo-implementacao.md).
+O resumo de implementação pode ser encontrado [aqui](/docs/resumo-implementacao.md).
 
 ## Tutoriais/Exemplos
 Para referências futuras, alguns tutoriais com as tecnologias usadas
