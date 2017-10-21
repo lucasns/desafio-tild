@@ -21,7 +21,7 @@
                         
                         <a class="post-category post-category-js" href="#" >MULTIPLE</a>
                         <a class="post-category post-category-yui" href="#">FUTURE TAG</a>
-                        <a class="post-category post-category-js" th:each="tag : ${post.tags}" href="#" th:text="${tag}" ></a>
+                        <a class="post-category post-category-js" th:each="tag : ${post.tags}" th:href="${'?tags=' + tag.name}"  th:text="${tag}" ></a>
                     </p>
                 </header>
 
