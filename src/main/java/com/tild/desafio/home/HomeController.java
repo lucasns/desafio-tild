@@ -3,7 +3,6 @@ package com.tild.desafio.home;
 import com.tild.desafio.blog.data.PostRepository;
 import com.tild.desafio.blog.data.TagRepository;
 import com.tild.desafio.blog.data.UserRepository;
-import com.tild.desafio.blog.model.Post;
 import com.tild.desafio.blog.model.Tag;
 import com.tild.desafio.blog.model.User;
 
@@ -32,8 +31,6 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView index(@RequestParam(name = "tags", required=false) List<String> tags,
             @RequestParam(name = "string", required=false) String string) {
-
-        System.out.println(string);
 
         ModelAndView mv = new ModelAndView("index");
         if (tags != null) {

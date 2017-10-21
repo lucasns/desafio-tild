@@ -182,6 +182,10 @@ h3 {
     vertical-align: middle;
 }
 
+.comment {
+	padding-bottom: 0.2em;
+}
+
 .comment-user {
 	font-size: 18px;
 }

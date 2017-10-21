@@ -17,7 +17,10 @@
                     <img width="48" height="48" alt="" class="post-avatar"
                          src="https://cdn2.iconfinder.com/data/icons/starwars/icons/128/clone-old.png"/>
 
-                    <h2 class="post-title" th:text="${post.title}"></h2>
+                    
+                        <h2 class="post-title" >
+                            <a th:href="${'posts?post='+post.id}" th:text="${post.title}"></a>
+                        </h2>
 
                     <p class="post-meta">
                         By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
@@ -42,7 +45,7 @@
         <!-- A wrapper for all the blog posts -->
         <div class="posts">
 
-            <section class="post" th:each="post : ${posts}">
+            <section class="post" >
                 <header class="post-header">
                     <img width="48" height="48" alt="" class="post-avatar"
                          src="https://cdn2.iconfinder.com/data/icons/starwars/icons/128/clone-old.png"/>
@@ -73,26 +76,19 @@
         <div class="comments">
             <h1 class="content-subhead">Comments</h1>
 
-            <section class="post" th:each="comment : ${comments}">
+            <section class="comment" th:each="comment : ${post.comments}">
                 <header class="post-header">
-                    <img width="48" height="48" alt="" class="post-avatar"
-                         src="https://cdn2.iconfinder.com/data/icons/starwars/icons/128/clone-old.png"/>
-
-                    <h2 class="comment-user" th:text="${comment}"></h2>
-
-                    <!-- 
-                    <p class="post-meta">
-                        By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
-                              th:text="${post.user.name}"></a> under
-                        
-                        <a class="post-category post-category-js" href="#" >MULTIPLE</a>
-                        <a class="post-category post-category-yui" href="#">FUTURE TAG</a>
-                        <a class="post-category post-category-js" th:each="tag : ${post.tags}" th:href="${'?tags=' + tag.name}"  th:text="${tag}" ></a>
-                    </p>
-                     -->
+                    <h2 class="comment-user" th:text="${comment.message}"></h2>
                 </header>
 
             </section>
+            <h1 class="content-subhead">New Comment</h1>
+            <form class="pure-form pure-form-aligned" method="post" action="/posts/comment" th:object="${newComment}"  >
+                <input name="post" th:value="${post.id}" type="hidden"></input>
+                <input th:value="${post}" th:field="*{post}" type="hidden"></input>
+                <textarea id="comment" class="pure-input-3-4" th:field="*{message}"></textarea>
+                <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            </form>
 
         </div>
 
