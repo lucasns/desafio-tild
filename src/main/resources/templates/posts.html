@@ -26,11 +26,12 @@
                         By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
                               th:text="${post.user.name}"></a> under
 
-                        <a class="post-category post-category-js" th:each="tag : ${post.tags}" th:href="${'?tags=' + tag.name}"  th:text="${tag}" ></a>
+                        <a class="post-category post-category-pure" th:each="tag : ${post.tags}" th:href="${'?tags=' + tag.name}"  th:text="${tag}" ></a>
                     </p>
                 </header>
 
                 <div class="post-description" th:utext="${post.text}"></div>
+                <label for="numComments" th:text="${post.comments.size()+ ' Comments'}"></label>
             </section>
 
         </div>
@@ -54,9 +55,7 @@
                         By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
                               th:text="${post.user.name}"></a> under
                         
-                        <a class="post-category post-category-js" href="#" >MULTIPLE</a>
-                        <a class="post-category post-category-yui" href="#">FUTURE TAG</a>
-                        <a class="post-category post-category-js" th:each="tag : ${post.tags}" th:href="${'?tags=' + tag.name}"  th:text="${tag}" ></a>
+                        <a class="post-category post-category-pure" th:each="tag : ${post.tags}" th:href="${'/?tags=' + tag.name}"  th:text="${tag}" ></a>
                     </p>
                 </header>
 
