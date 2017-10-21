@@ -46,4 +46,24 @@ public class Comment {
     public void setPost(Post post) {
         this.post = post;
     }
+    
+    public boolean isValid() {
+        boolean valid = false;
+
+        try {
+            Arrays.asList(this.getMessage())
+                    .forEach(Preconditions::checkNotNull);
+
+            Arrays.asList(this.getMessage())
+                    .forEach(txt -> {
+                        Preconditions.checkArgument(!txt.isEmpty());
+                    });
+
+            valid = true;
+        } catch (Exception e){
+            valid = false;
+        }
+
+        return valid;
+    }
 }

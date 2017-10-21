@@ -72,7 +72,9 @@ public class PostsController {
     
     @PostMapping("/comment")
     public ModelAndView createPost(@RequestParam(name = "post", required=false) Long postId, Comment comment) {
-        commentRepository.save(comment); 
+        if (comment.isValid()) {
+            commentRepository.save(comment);
+        }
         return new ModelAndView("redirect:/posts?post="+postId);
     }
 }
