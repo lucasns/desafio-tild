@@ -176,3 +176,8 @@ h3 {
         text-align: center;
     }
 }
+
+.selectize-control {
+    display: inline-block;
+    vertical-align: middle;
+}
