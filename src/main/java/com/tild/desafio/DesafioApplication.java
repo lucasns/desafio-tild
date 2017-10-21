@@ -1,8 +1,10 @@
 package com.tild.desafio;
 
 import com.tild.desafio.blog.data.PostRepository;
+import com.tild.desafio.blog.data.TagRepository;
 import com.tild.desafio.blog.data.UserRepository;
 import com.tild.desafio.blog.model.Post;
+import com.tild.desafio.blog.model.Tag;
 import com.tild.desafio.blog.model.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +17,7 @@ import java.util.Arrays;
 public class DesafioApplication {
 
     @Bean
-    CommandLineRunner loadSampleData(UserRepository userRepository, PostRepository postRepository) {
+    CommandLineRunner loadSampleData(UserRepository userRepository, PostRepository postRepository, TagRepository tagRepository) {
         return args -> {
             //users
             Arrays.asList("Josh Long@starbuxman, Trisha Gee@trisha_gee, Mario Fusco@mariofusco".split(","))
@@ -46,6 +48,12 @@ public class DesafioApplication {
             post.setTitle("What are Cloud-Native Applications?");
             post.setText(text);
             post.setUser(joshLong);
+            
+            Arrays.asList("Tag 1" , "Tag 2", "Tag 3", "Tag 4", "Tag 5").forEach(tagName -> {
+                Tag tag = new Tag();
+                tag.setName(tagName);
+                tagRepository.save(tag);
+            });
 
             postRepository.save(post);
         };
