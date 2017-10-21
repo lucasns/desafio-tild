@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tild.desafio.blog.data.PostRepository;
@@ -35,6 +36,15 @@ public class PostsController {
         mv.addObject("allTags", tagRepository.findAll());
         mv.addObject("newPost", new Post());
 
+        return mv;
+    }
+    
+    @GetMapping("/")
+    public ModelAndView index(@RequestParam(name = "post", required=false) List<String> post) {
+        ModelAndView mv = new ModelAndView("post-page");
+        List<String> comments = Arrays.asList("jsahdkashdkjashdkajshdkjashdkj", "akjhfkjashfajkshfkajshfkjahsf"); 
+        mv.addObject("comments", comments);
+        mv.addObject("posts", postRepository.findAll());
         return mv;
     }
 
