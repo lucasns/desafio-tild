@@ -32,9 +32,9 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView index(@RequestParam(name = "tags", required=false) List<String> tags,
             @RequestParam(name = "string", required=false) String string) {
-        
+
         System.out.println(string);
-        
+
         ModelAndView mv = new ModelAndView("index");
         if (tags != null) {
             List<Tag> tagList = tagRepository.findByNameIn(tags);
@@ -43,13 +43,18 @@ public class HomeController {
                 return mv;
             }
         }
-        
-        if (string != null) {
 
-            mv.addObject("posts", postRepository.findByTitleIgnoreCaseContaining(string));
-            return mv;
+        if (string != null) {
+            List<User> userList = userRepository.findByNameIgnoreCaseContaining(string);
+            if (userList.size() > 0) {
+                mv.addObject("posts", postRepository.findByTitleIgnoreCaseContainingOrUserIn(string, userList));
+                return mv;
+            } else {
+                mv.addObject("posts", postRepository.findByTitleIgnoreCaseContaining(string));
+                return mv;
+            }
         }
-        
+
         mv.addObject("posts", postRepository.findAll());
         return mv;
     }
