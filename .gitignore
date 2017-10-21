@@ -2,6 +2,10 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
+
+### Eclipse ###
+bin/
+
 ### STS ###
 out/
 .apt_generated
