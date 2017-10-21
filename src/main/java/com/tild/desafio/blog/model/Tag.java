@@ -1,9 +1,12 @@
 package com.tild.desafio.blog.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Tag {
@@ -11,6 +14,9 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    
+    @ManyToMany
+    private List<Post> posts;
     
     public Long getId() {
         return id;

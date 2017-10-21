@@ -82,7 +82,7 @@
                     <div class="pure-control-group">
                         <label for="tags">Tags</label>
                         <select class="selectize pure-input-1-2" th:field="*{tags}" multiple="multiple">
-                            <option th:each="tag : ${allTags}" th:value="${tag}" th:text="${tag}"></option>
+                            <option th:each="tag : ${allTags}" th:value="${tag.id}" th:text="${tag.name}"></option>
                         </select>
 
                         <script>

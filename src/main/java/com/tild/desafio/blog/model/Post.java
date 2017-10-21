@@ -24,8 +24,8 @@ public class Post {
     @JsonIgnoreProperties("posts")
     private User user;
     
-    @ElementCollection
-    private List<String> tags;
+    @ManyToMany
+    private List<Tag> tags;
 
     public Post() {
         super();
@@ -63,11 +63,11 @@ public class Post {
         this.user = user;
     }
 
-    public List<String> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 
