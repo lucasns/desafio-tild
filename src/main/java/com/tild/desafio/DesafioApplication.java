@@ -1,8 +1,10 @@
 package com.tild.desafio;
 
+import com.tild.desafio.blog.data.CommentRepository;
 import com.tild.desafio.blog.data.PostRepository;
 import com.tild.desafio.blog.data.TagRepository;
 import com.tild.desafio.blog.data.UserRepository;
+import com.tild.desafio.blog.model.Comment;
 import com.tild.desafio.blog.model.Post;
 import com.tild.desafio.blog.model.Tag;
 import com.tild.desafio.blog.model.User;
@@ -11,13 +13,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class DesafioApplication {
 
     @Bean
-    CommandLineRunner loadSampleData(UserRepository userRepository, PostRepository postRepository, TagRepository tagRepository) {
+    CommandLineRunner loadSampleData(UserRepository userRepository, PostRepository postRepository, TagRepository tagRepository, CommentRepository commentRepository) {
         return args -> {
             //users
             Arrays.asList("Josh Long@starbuxman, Trisha Gee@trisha_gee, Mario Fusco@mariofusco".split(","))
@@ -54,9 +58,19 @@ public class DesafioApplication {
                 tag.setName(tagName);
                 tagRepository.save(tag);
             });
-
+            
             postRepository.save(post);
-        };
+            List<Comment> comments = new ArrayList<>();
+            Arrays.asList("jsahdkashdkjashdkajfghfghfghfghfghfggggggggggggggggggggggggggggh         sdfsfsdfdsfsdfsfsdfsd       fsasfaifhasjkhbakjshnk"+
+                    "jahfnkavhkahfnfkahvkjhavkfhakjhaknhfkajhfdfsdffdsshdkjashdkj",
+                    "akjhfkjashfajkshfkajshfkjhjkhkolruqioruioy afufhaiufhasjkfhbaksjhfaksjhfkajsfhkajhfkaj ahfkja hkahfkajh    ahsf")
+                    .forEach(t -> {
+                        Comment comment = new Comment();
+                        comment.setMessage(t);
+                        comment.setPost(post);
+                        commentRepository.save(comment);
+                    }); 
+            };
     }
 
     public static void main(String[] args) {
