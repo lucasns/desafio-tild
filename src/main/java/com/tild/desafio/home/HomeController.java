@@ -5,6 +5,7 @@ import com.tild.desafio.blog.data.TagRepository;
 import com.tild.desafio.blog.data.UserRepository;
 import com.tild.desafio.blog.model.Post;
 import com.tild.desafio.blog.model.Tag;
+import com.tild.desafio.blog.model.User;
 
 import java.util.List;
 
@@ -18,16 +19,22 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
     private PostRepository postRepository;
+    private UserRepository userRepository;
     private TagRepository tagRepository;
 
     @Autowired
     public HomeController(PostRepository postRepository, UserRepository userRepository, TagRepository tagRepository) {
         this.postRepository = postRepository;
+        this.userRepository = userRepository;
         this.tagRepository = tagRepository;
     }
 
     @GetMapping("/")
-    public ModelAndView index(@RequestParam(name = "tags", required=false) List<String> tags) {
+    public ModelAndView index(@RequestParam(name = "tags", required=false) List<String> tags,
+            @RequestParam(name = "string", required=false) String string) {
+        
+        System.out.println(string);
+        
         ModelAndView mv = new ModelAndView("index");
         if (tags != null) {
             List<Tag> tagList = tagRepository.findByNameIn(tags);
@@ -35,6 +42,12 @@ public class HomeController {
                 mv.addObject("posts", postRepository.findByTagsIn(tagList));
                 return mv;
             }
+        }
+        
+        if (string != null) {
+
+            mv.addObject("posts", postRepository.findByTitleIgnoreCaseContaining(string));
+            return mv;
         }
         
         mv.addObject("posts", postRepository.findAll());
