@@ -84,7 +84,7 @@
             <form class="pure-form pure-form-aligned" method="post" action="/posts/comment" th:object="${newComment}"  >
                 <input name="post" th:value="${post.id}" type="hidden"></input>
                 <input th:value="${post}" th:field="*{post}" type="hidden"></input>
-                <textarea id="comment" class="pure-input-3-4" th:field="*{message}"></textarea>
+                <textarea id="comment" class="pure-input-3-4" th:field="*{message}" required="required"></textarea>
                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
             </form>
 
@@ -102,21 +102,21 @@
                 <fieldset>
                     <div class="pure-control-group">
                         <label for="user">User</label>
-                        <select id="user" class="pure-input-1-2" th:field="*{user}">
-                            <option value="0"></option>
+                        <select id="user" class="pure-input-1-2" th:field="*{user}" required="required">
+                            <option hidden="hidden" value=""></option>
                             <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
                         </select>
                     </div>
 
                     <div class="pure-control-group">
                         <label for="title">Title</label>
-                        <input id="title" class="pure-input-3-4" type="text" placeholder="Title" th:field="*{title}"/>
+                        <input id="title" class="pure-input-3-4" type="text" placeholder="Title" th:field="*{title}" required="required"/>
                     </div>
 
                     <div class="pure-control-group">
                         <label for="title">Post</label>
                         <div class="pure-u-3-4">
-                            <textarea id="summernote" th:field="*{text}"></textarea>
+                            <textarea id="summernote" th:field="*{text}" required="required"></textarea>
 
                             <script>
                                 $(document).ready(function () {
