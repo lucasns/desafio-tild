@@ -69,49 +69,6 @@
     </div>
 </div>
 
-<div th:fragment="comments" class="content pure-u-1 pure-u-md-3-4">
-    <div>
-        <div class="comments">
-            <h1 class="content-subhead">Comments</h1>
-
-            <section class="comment" th:each="comment : ${post.comments}">
-                <header class="post-header">
-                    <h2 class="comment-user" th:text="${comment.message}"></h2>
-                    <p class="post-meta">
-                        By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
-                              th:text="${comment.user.name}"></a>
-                    </p>
-                </header>
-
-            </section>
-            <h1 class="content-subhead">New Comment</h1>
-            <form class="pure-form pure-form-aligned" method="post" action="/posts/comment" th:object="${newComment}"  >
-                <fieldset>
-	                <input name="post" th:value="${post.id}" type="hidden"></input>
-	                <input th:value="${post}" th:field="*{post}" type="hidden"></input>
-	                
-	                <div class="pure-control-group">
-	                   <textarea id="comment" class="pure-input-3-4" th:field="*{message}" required="required"></textarea>
-	                </div>
-	                
-	                <div class="pure-control-group">
-	                    <select id="user" class="pure-input-1-4" th:field="*{user}" required="required">
-	                        <option hidden="hidden" value=""></option>
-	                        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
-	                    </select>
-	                </div>
-	                
-	                <div class="pure-control-group">
-	                   <button type="submit" class="pure-button pure-button-primary">Submit</button>
-	                </div>
-                </fieldset>
-            </form>
-
-        </div>
-
-    </div>
-</div>
-
 <div th:fragment="new" class="content pure-u-1 pure-u-md-3-4">
     <div>
         <div class="posts">
