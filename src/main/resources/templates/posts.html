@@ -2,12 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
+<div th:fragment="search-bar" class="content pure-u-1 pure-u-md-3-4">
+    <form class="pure-form pure-form-aligned" method="get" action="/">
+        <input id="string" name="string" class="pure-input-3-4" type="text" placeholder="Post title"/>
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    </form>
+</div>
+
 <div th:fragment="index" class="content pure-u-1 pure-u-md-3-4">
     <div>
-        <form class="pure-form pure-form-aligned" method="get" action="/">
-            <input id="string" name="string" class="pure-input-3-4" type="text" placeholder="Post title"/>
-        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-        </form>
         <!-- A wrapper for all the blog posts -->
         <div class="posts">
             <h1 class="content-subhead">Recent Posts</h1>
