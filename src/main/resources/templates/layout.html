@@ -35,6 +35,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.0/js/standalone/selectize.min.js"></script>
 </head>
 <body>
+
 <div th:fragment="sidebar" class="sidebar pure-u-1 pure-u-md-1-4">
     <div class="header">
         <h1 class="brand-title">
@@ -57,5 +58,14 @@
         </nav>
     </div>
 </div>
+
+
+<div th:fragment="search-bar" class="content pure-u-1 pure-u-md-3-4">
+    <form class="pure-form pure-form-aligned" method="get" action="/">
+        <input id="string" name="string" class="pure-input-3-4" type="text" placeholder="Post title"/>
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    </form>
+</div>
+
 </body>
 </html>
