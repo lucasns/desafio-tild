@@ -69,7 +69,7 @@ public class DesafioApplication {
                         comment.setMessage(t);
                         comment.setPost(post);
                         commentRepository.save(comment);
-                    }); 
+                    });
             };
     }
 

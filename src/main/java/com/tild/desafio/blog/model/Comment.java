@@ -22,6 +22,9 @@ public class Comment {
 
     @ManyToOne
     private Post post;
+    
+    @ManyToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -47,7 +50,20 @@ public class Comment {
         this.post = post;
     }
     
-    public boolean isValid() {
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+    
+    @Override
+    public String toString() {
+    	return this.message;
+    }
+
+	public boolean isValid() {
         boolean valid = false;
 
         try {

@@ -23,6 +23,9 @@ public class User {
     @JsonIgnoreProperties("user")
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
+    
+	@OneToMany(mappedBy = "user")
+    private List<Comment> comments;
 
     public User() {
         super();
@@ -59,6 +62,14 @@ public class User {
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
+    
+    public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
     public String getTwitterUrl() {
         return String.format("https://twitter.com/%s", this.getTwitter());

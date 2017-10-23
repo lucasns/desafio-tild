@@ -89,6 +89,7 @@ public class Post {
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +
                 ", user=" + user +
+                ", comments=" + this.comments +
                 '}';
     }
 
