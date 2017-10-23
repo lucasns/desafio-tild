@@ -68,6 +68,7 @@ public class DesafioApplication {
                         Comment comment = new Comment();
                         comment.setMessage(t);
                         comment.setPost(post);
+                        comment.setUser(joshLong);
                         commentRepository.save(comment);
                     });
             };

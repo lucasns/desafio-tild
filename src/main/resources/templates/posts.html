@@ -76,6 +76,10 @@
             <section class="comment" th:each="comment : ${post.comments}">
                 <header class="post-header">
                     <h2 class="comment-user" th:text="${comment.message}"></h2>
+                    <p class="post-meta">
+                        By <a class="post-author" target="_blank" th:href="${post.user.getTwitterUrl()}"
+                              th:text="${post.user.name}"></a>
+                    </p>
                 </header>
 
             </section>
