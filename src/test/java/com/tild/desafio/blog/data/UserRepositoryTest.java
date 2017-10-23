@@ -40,6 +40,4 @@ public class UserRepositoryTest {
 	    Assert.assertThat(found.get(0).getName(), Matchers.is("Test User 1"));
 	    Assert.assertThat(found.get(1).getName(), Matchers.is("Test User 2"));
 	}
-	
-
 }

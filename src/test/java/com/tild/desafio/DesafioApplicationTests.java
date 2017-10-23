@@ -40,5 +40,4 @@ public class DesafioApplicationTests {
 		//then
 		Assert.assertThat(found.getUser(), Matchers.is(user));
 	}
-
 }

@@ -1,5 +1,12 @@
 package com.tild.desafio;
 
+import java.util.Arrays;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
 import com.tild.desafio.blog.data.CommentRepository;
 import com.tild.desafio.blog.data.PostRepository;
 import com.tild.desafio.blog.data.TagRepository;
@@ -8,14 +15,6 @@ import com.tild.desafio.blog.model.Comment;
 import com.tild.desafio.blog.model.Post;
 import com.tild.desafio.blog.model.Tag;
 import com.tild.desafio.blog.model.User;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
 public class DesafioApplication {
@@ -60,7 +59,6 @@ public class DesafioApplication {
             });
             
             postRepository.save(post);
-            List<Comment> comments = new ArrayList<>();
             Arrays.asList("jsahdkashdkjashdkajfghfghfghfghfghfggggggggggggggggggggggggggggh         sdfsfsdfdsfsdfsfsdfsd       fsasfaifhasjkhbakjshnk"+
                     "jahfnkavhkahfnfkahvkjhavkfhakjhaknhfkajhfdfsdffdsshdkjashdkj",
                     "akjhfkjashfajkshfkajshfkjhjkhkolruqioruioy afufhaiufhasjkfhbaksjhfaksjhfkajsfhkajhfkaj ahfkja hkahfkajh    ahsf")

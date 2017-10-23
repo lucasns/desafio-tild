@@ -24,7 +24,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
     
-	@OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
     public User() {
@@ -67,7 +67,7 @@ public class User {
 		return comments;
 	}
 
-	public void setComments(List<Comment> comments) {
+    public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 
