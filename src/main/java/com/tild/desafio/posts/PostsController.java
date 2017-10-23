@@ -54,6 +54,7 @@ public class PostsController {
 
             if (post != null) {
                 mv.addObject("post", post);
+                mv.addObject("users", userRepository.findAll());
                 return mv;
             }
         }
