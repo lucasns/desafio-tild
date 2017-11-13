@@ -24,5 +24,58 @@
     </div>
 </div>
 
+<div th:fragment="list" class="content pure-u-1 pure-u-md-3-4">
+    <div>
+        <h1 class="content-subhead">User List</h1>
+		<table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Twitter</th>
+        </tr>
+        <tr th:each="user : ${users}">
+          <td th:text="${user.id}">a</td>
+          <td th:text="${user.name}">a</td>
+          <td th:text="${user.twitter}">a</td>
+        </tr>
+		</table>
+    
+    </div>
+    
+    <div class='pagination pagination-centered'>
+	  <ul>
+	  	<li th:class="${currPage &lt; 2}? 'disabled' : ''">
+	        <span th:if='${currPage &lt; 2}'>← First</span>
+	        <a th:if='${not (currPage &lt; 2)}' th:href='@{${"/users/list"}(page=1)}'>← First</a>
+	    </li>
+	    
+	    <li th:class="${currPage &lt; 2}? 'disabled' : ''">
+	        <span th:if='${currPage &lt; 2}'>Prev</span>
+	        <a th:if='${not (currPage &lt; 2)}' th:href='@{${"/users/list"}(page=${currPage-1})}'>Prev</a>
+	    </li>
+
+	    <li th:each='page : ${pageList}' th:class="${currPage == page}? 'active' : ''">
+	    	<span th:if='${page == null}'>...</span>
+			<span th:if='${currPage == page}' th:text='${page}'></span>
+			<a th:if='${not (currPage == page) and not (page == null)}' th:href='@{${"/users/list"}(page=${page})}'><span th:text='${page}'></span></a>
+		</li>
+	    
+	    
+	    <li th:class="${currPage &gt; numPages-1}? 'disabled' : ''">
+	        <span th:if='${currPage &gt; numPages-1}'>Next</span>
+	        <a th:if='${not (currPage &gt; numPages-1)}' th:href='@{${"/users/list"}(page=${currPage+1})}'>Next</a>
+	    </li>
+	    
+	    
+	    <li th:class="${currPage == numPages}? 'disabled' : ''">
+	        <span th:if='${currPage == numPages}'>Last →</span>
+	        <a th:if='${not (currPage == numPages)}' th:href='@{${"/users/list"}(page=10)}'>Last →</a>
+	    </li>
+	  </ul>
+	</div>
+</div>
+
+
+
 </body>
 </html>

@@ -1,12 +1,5 @@
 package com.tild.desafio;
 
-import java.util.Arrays;
-
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
 import com.tild.desafio.blog.data.CommentRepository;
 import com.tild.desafio.blog.data.PostRepository;
 import com.tild.desafio.blog.data.TagRepository;
@@ -15,6 +8,12 @@ import com.tild.desafio.blog.model.Comment;
 import com.tild.desafio.blog.model.Post;
 import com.tild.desafio.blog.model.Tag;
 import com.tild.desafio.blog.model.User;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 public class DesafioApplication {
@@ -32,6 +31,14 @@ public class DesafioApplication {
 
                         userRepository.save(user);
                     });
+            
+            
+            for (int i = 0; i < 100; i++) {
+            	User nUser = new User();
+            	nUser.setName("Name " + i);
+            	nUser.setTwitter("Twitter " + i);
+            	userRepository.save(nUser);
+            }
 
             String text = "<p>\n" +
                     "                        Cloud-native is an approach to building and running applications that fully exploits the\n" +

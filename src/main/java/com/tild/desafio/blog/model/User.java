@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@Table(name="usuario")
 @Entity
 public class User {
 
